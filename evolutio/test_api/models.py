@@ -6,7 +6,6 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
 
-
 class Customer(models.Model):
 
     first_name = models.CharField(max_length=150)

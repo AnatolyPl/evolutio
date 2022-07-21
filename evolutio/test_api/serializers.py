@@ -40,10 +40,11 @@ class DeliverySerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
 
     deliveries = DeliverySerializer(many=True, read_only=True, source='delivery_set')
+    customer_name = serializers.CharField(source='customer_FK.first_name', read_only=True)
 
     class Meta:
         model = models.Order
-        fields = ['id', 'brand_id', 'reference', 'date_of_creation', 'price_total', 'deliveries']
+        fields = ['id', 'brand_id', 'reference', 'date_of_creation', 'price_total', 'deliveries', 'customer_name']
 
 
 class ProductQuantitySerializer(serializers.ModelSerializer):
