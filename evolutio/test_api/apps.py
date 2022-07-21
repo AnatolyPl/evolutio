@@ -5,3 +5,6 @@ class TestApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'test_api'
 
+    def ready(self):
+        import test_api.signals
+

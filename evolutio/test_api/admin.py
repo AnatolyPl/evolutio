@@ -1,6 +1,8 @@
 from django.contrib import admin
 from test_api import models
 
+from rest_framework.authtoken.models import Token
+
 
 class OrderAdmin(admin.ModelAdmin):
 

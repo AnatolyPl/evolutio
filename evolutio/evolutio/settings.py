@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-aw6hh1ea_++ac!y)%)^j&6%3=^!z6dp=t+tpu$*l7v$o2w(%#!
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,11 +19,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'test_api.apps.TestApiConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'django_filters'
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
 }
 
 MIDDLEWARE = [

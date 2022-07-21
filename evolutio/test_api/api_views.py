@@ -1,16 +1,19 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.exceptions import NotFound
+from rest_framework.permissions import IsAuthenticated
 from django.db.models import Sum
 
 from test_api import models, serializers
 from test_api.paginators import CursorOrderPagination
+from test_api.api_authentication import TokenAuthentication
 
 
 class OrderListView(ListAPIView):
     """
     ListAPI for retrieving orders info and its deliveries by brand_id
     """
-
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     serializer_class = serializers.OrderSerializer
     pagination_class = CursorOrderPagination
 
@@ -36,7 +39,8 @@ class ProductQuantityListView(ListAPIView):
     """
     ListAPI for retrieving quantity of product of each type and its name by reference or id
     """
-
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     serializer_class = serializers.ProductQuantitySerializer
 
     def get_queryset(self):
